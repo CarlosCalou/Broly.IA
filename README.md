@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# 🟢 Broly.IA — Smart Log Analyzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Projeto desenvolvido para o programa **Geração Tech**  
+> Desenvolvido por **Carlos Calou**
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 💡 Origem da Ideia
 
-### `npm start`
+Como estagiário de TI na área de desenvolvimento, enfrentei na prática um problema muito comum entre quem está começando: receber um log de erro na tela e não saber por onde começar a resolver.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Stack traces, NullPointerExceptions, erros de conexão com banco de dados — para quem ainda está aprendendo, essas mensagens parecem um idioma desconhecido. Perder horas procurando no Google o que um erro significa é uma realidade diária de desenvolvedores iniciantes e equipes de suporte.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+O **Broly.IA** nasceu dessa dor real. A ideia é simples: usar Inteligência Artificial como ferramenta para democratizar o entendimento de erros, tornando o diagnóstico acessível para qualquer pessoa, independente do nível de experiência.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎯 Problema que Resolve
 
-### `npm run build`
+Em ambientes de desenvolvimento, logs de erro são gerados o tempo todo. O problema é que interpretá-los corretamente exige experiência — e quem está começando não tem essa bagagem ainda.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Quem é afetado:**
+- Desenvolvedores iniciantes
+- Estagiários de TI
+- Equipes de suporte técnico
+- Estudantes de programação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**O impacto:** lentidão na resolução de problemas, dependência excessiva de desenvolvedores sênior para tarefas simples e desmotivação por não conseguir avançar sozinho.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ✅ Solução
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+O Broly.IA permite que o usuário cole qualquer log, stack trace ou mensagem de erro e receba em segundos:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Tipo do erro** — identificado em linguagem simples
+- **Causa provável** — explicada de forma acessível para iniciantes
+- **Como resolver** — passos práticos e diretos
+- **Nível de severidade** — baixa, média ou alta
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A IA funciona como um mentor disponível 24 horas, acelerando o aprendizado e a produtividade de quem está começando na área.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🏗️ Arquitetura do Projeto
+```
+broly-ia/
+├── frontend/     → React.js (interface do usuário)
+└── backend/      → Java + Spring Boot (API + integração com IA)
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Fluxo completo:**
+```
+Usuário cola o log
+      ↓
+React envia para o backend Java
+      ↓
+Java chama a API do Google Gemini
+      ↓
+Gemini analisa e retorna o diagnóstico
+      ↓
+React exibe o resultado formatado
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🛠️ Tecnologias Utilizadas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Camada | Tecnologia |
+|--------|-----------|
+| Frontend | React.js |
+| Backend | Java 17 + Spring Boot 4 |
+| Inteligência Artificial | Google Gemini API |
+| Build | Maven |
+| Versionamento | Git + GitHub |
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Como Rodar o Projeto
 
-### Making a Progressive Web App
+### Pré-requisitos
+- Node.js instalado
+- Java 17 instalado
+- Chave da API do Gemini (gratuita em [aistudio.google.com](https://aistudio.google.com/app/apikey))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Backend
+```bash
+cd backend
+```
 
-### Advanced Configuration
+Abre o arquivo `src/main/resources/application.properties` e adiciona sua chave:
+```properties
+gemini.api.key=SUA_CHAVE_AQUI
+server.port=8080
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Roda o servidor:
+```bash
+.\mvnw.cmd spring-boot:run
+```
 
-### Deployment
+### Frontend
+```bash
+cd frontend
+npm install
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Acessa `http://localhost:3000` no navegador.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📌 Funcionalidades do MVP
+
+- [x] Input manual de logs e stack traces
+- [x] Análise automática via IA
+- [x] Diagnóstico estruturado (erro, causa e solução)
+- [x] Indicador visual de severidade
+- [x] Exemplos prontos para teste
+- [x] Histórico de análises recentes
+- [x] Tema escuro estilo terminal
+
+---
+
+## 🔮 Próximas Versões
+
+- [ ] Banco de dados para salvar histórico permanente
+- [ ] Autenticação de usuários
+- [ ] Suporte a upload de arquivos de log
+- [ ] Integração direta com IDEs
+- [ ] Dashboard com estatísticas de erros mais comuns
+
+---
+
+## 🧠 Por que usar IA nesse contexto?
+
+Hoje, saber usar IA como ferramenta de trabalho é tão importante quanto saber programar. O Broly.IA não substitui o aprendizado — ele **acelera** ele. Ao ver a explicação do erro e a sugestão de solução, o desenvolvedor iniciante aprende o padrão e na próxima vez já reconhece sozinho.
+
+Usar IA de forma inteligente e direcionada é uma habilidade fundamental no mercado atual, e esse projeto é um exemplo prático disso.
+
+---
+
+## 👨‍💻 Autor
+
+**Carlos Calou**  
+Estagiário de TI | Estudante de Ciência de Dados | Geração Tech  
+
+---
+
+*Projeto desenvolvido como parte do programa Geração Tech*
